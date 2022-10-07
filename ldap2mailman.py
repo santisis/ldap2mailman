@@ -1,4 +1,4 @@
-# ldap2mailman 0.1, a LDAP to Mailman3 syncer.
+# ldap2mailman 0.1, an LDAP to Mailman3 syncer.
 # Copyright (C) 2022 Sebastián Santisi <ssantisi@fi.uba.ar>
 #
 # This program is free software: you can redistribute it and/or modify it under
