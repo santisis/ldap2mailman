@@ -55,7 +55,7 @@ The program assumes a `posixGroup` schema for groups, where a group has a
 attributes.
 
 A user could be part of a group by having its `gidNumber` set to a certain
-primary group or by having their `uid` is a `memberUid` attribute of its
+primary group or by having their `uid` as a `memberUid` attribute for its
 secondary group/s.
 
 If a user doesn't have a `mail` attribute, it is ignored by the process.
@@ -64,19 +64,19 @@ LDAP to Mailman
 ---------------
 
 For the program to pair LDAP with Mailman it requires that the `group` found in
-the LDAP matches a `group@listdomains` in Mailman. If an LDAP group doesn't
-match a list in Mailman it will be ignored, in the same way if a Mailman list
+the LDAP matches a `group@listsdomain` in the Mailman. If an LDAP group doesn't
+match a list in the Mailman it will be ignored, in the same way if a Mailman list
 doesn't match any LDAP group it will be ignored too. In order to be part of the
 sync process, both LDAP group and Mailman list with the same name must exist.
 
 For all the users present in the LDAP group, the program checks if they're
-subscribed to the Mailman list and if not, it will subscribe to it. For all
+already subscribed to the Mailman list and if not, it will subscribe to it. For all
 the email addresses already subscribed to the Mailman list, the program checks
 if they're still present in the LDAP group and unsubscribe it if not. There's a
 config parameter to define mail addresses that must be left subscribed to the
-list being ignored when unsubscribing missing LDAP users.
+list, being ignored when unsubscribing missing LDAP users.
 
-If the config defines a catchall list all the users, whether or not they have
+If the config defines a catchall list, all the users, whether or not they have
 been included as part of a list, will be synced to this list.
 
 License
