@@ -1,0 +1,24 @@
+# config.py.example ldap2mailman 0.1, a LDAP to Mailman3 syncer.
+# Copyright (C) 2022 Sebastián Santisi <ssantisi@fi.uba.ar>
+
+config = {
+    # LDAP server URI:
+    'ldap_server': 'ldap://ldap.example.org',
+    # If True authenticate using Kerberos ticket, else LDAP:
+    'use_kerberos': True,
+    # If using LDAP authentication user DN and password:
+    'admin_user': 'cn=admin,dc=example,dc=org',
+    'admin_password': 'password',
+    # DC of the LDAP DN:
+    'base': 'dc=example,dc=org',
+    # Mailman3 REST API:
+    'rest_uri': 'http://localhost:8001/3.1',
+    'rest_user': 'restadmin',
+    'rest_password': 'restpass',
+    # @domain of the Mailman lists:
+    'lists_domain': 'lists.example.org',
+    # Prevent to unsubscribe certain emails from the lists:
+    'exclude_mails': ('admin@example.org', ),
+    # Catchall list with all the users in the LDAP if wanted:
+    'catchall_list': 'everyone@lists.example.org',
+}
