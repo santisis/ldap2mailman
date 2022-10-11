@@ -98,7 +98,8 @@ def main():
             log(3, 'Checking if %s already in list...' % uid)
             if not l.is_member(mails_by_uid[uid]):
                 log(1, 'Adding %s as a member of %s@%s' % (uid, gid, config['lists_domain']))
-                l.subscribe(mails_by_uid[uid], pre_verified=True, pre_confirmed=True, pre_approved=True, send_welcome_message=False)
+                try: l.subscribe(mails_by_uid[uid], pre_verified=True, pre_confirmed=True, pre_approved=True, send_welcome_message=False)
+                except Exception as e: log(0, 'Error subscribing %s with mail "%s": %s' % (uid, mails_by_uid[uid], str(e)))
    
         log(2, 'Removing members from %s@%s list...' % (gid, config['lists_domain']))
         for m in l.members:
@@ -124,7 +125,8 @@ def main():
             log(3, 'Checking if %s already in list...' % uids_by_mail[mail])
             if not everyone.is_member(mail):
                 log(1, 'Adding %s as a member of %s' % (uids_by_mail[mail], config['catchall_list']))
-                everyone.subscribe(mail, pre_verified=True, pre_confirmed=True, pre_approved=True, send_welcome_message=False)
+                try: everyone.subscribe(mail, pre_verified=True, pre_confirmed=True, pre_approved=True, send_welcome_message=False)
+                except Exception as e: log(0, 'Error subscribing "%s": %s' % (mail, str(e)))
     
         log(2, 'Removing members from %s catchall list...' % (config['lists_domain']))
         for m in everyone.members:
