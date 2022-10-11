@@ -35,10 +35,14 @@ When invoked, the program performs the sync between LDAP and Mailman3:
 
 `$ python3 ldap2mailman.py`
 
-by default, it runs quietly, but verbosity could be increased with `-v`, `-vv`
-and `-vvv`:
+by default, it only outputs when an user is subscription is modified, but
+verbosity could be increased using `-v` and `-vv`:
 
-`$ python3 ldap2mailman.py -vv`
+`$ python3 ldap2mailman.py -v`
+
+It's also possible to run quietly passing `-q` as an argument:
+
+`$ python3 ldap2mailman.py -q`
 
 Configuration
 -------------

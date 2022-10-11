@@ -20,7 +20,7 @@ import ldap
 from mailmanclient import Client
 import sys
 
-log_level = 0
+log_level = 1
 def log(level, msg):
     if level > log_level:
         return
@@ -144,9 +144,11 @@ def main():
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         if sys.argv[1] == '-h':
-            print('Usage: %s [-v]\n-v,-vv,-vvv: Level of verbosity' % sys.argv[0])
+            print('Usage: %s [-v] [-q]\n-q: Run quietly\n-v,-vv: Level of verbosity' % sys.argv[0])
             sys.exit(0)
         if sys.argv[1].startswith('-v'):
-            log_level = len(sys.argv[1]) - 1
+            log_level = len(sys.argv[1])
+        elif sys.argv[1] == '-q':
+            log_level = 0
 
     main()
